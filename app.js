@@ -46,7 +46,7 @@ var intervalEvent = function() {
     document.body.style.background = "url\(house/house_00100.png\) "+_background_style;
   }else{
     pauseAudio();
-    document.body.style.background = "url\(house/house_11111.png\) "+_background_style;
+    document.body.style.background = "url\(house/house_00000.png\) "+_background_style;
   }
 }
 
@@ -77,6 +77,11 @@ var launchEvent = function() {
   audio = document.getElementsByTagName("audio")[0];
   musictitle = document.getElementById('musictitle');
   
+  // loadImage
+  var img_url = ['house/house_00000.png','house/house_00010.png','house/house_00100.png','house/house_01000.png','house/house_10000.png'];
+  for(var i = 0; i < img_url.length; i++){
+    new Image().src=img_url[i];
+  }
   
   setInterval(intervalEvent, 500);
   
@@ -120,6 +125,7 @@ var playAudio = function(song) {
 var pauseAudio = function() {
   if(_playFlag){
     if(audio){
+      musictitle.innerHTML = "";
         _playFlag = false;
         audio.pause();
     }

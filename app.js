@@ -30,14 +30,23 @@ var intervalEvent = function() {
   
   _e.innerHTML = output;
   
+  
+  
   if(atKitchen){
     playAudio("music/kitchen.mp3");
+    document.body.style.background = "url\(house/house_00010.png\)";
   }else if(atLiving){
     playAudio("music/living.mp3");
+    document.body.style.background = "url\(house/house_01000.png\)";
   }else if(atBedroom){
     playAudio("music/bedroom.mp3"); 
+    document.body.style.background = "url\(house/house_10000.png\)";
   }else if(atDining){
     playAudio("music/kakusei.mp3"); 
+    document.body.style.background = "url\(house/house_00100.png\)";
+  }else{
+    pauseAudio();
+    document.body.style.background = "url\(house/house_11111.png\)";
   }
 }
 

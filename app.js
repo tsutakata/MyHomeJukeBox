@@ -1,12 +1,18 @@
 var mySerial, 
     _e,
-    parser_regexp;
+    parser_regexp,
+    cookImage,
+    audio,
+    musictitle;
 
 var atDining,
     atBedroom,
     atKitchen,
     atLiving,
     temperature = '';
+
+var _playFlag = false;
+var current_song = "";
 
 var intervalEvent = function() {
     var output = "温度　"+temperature+"度<br/>";    
@@ -16,7 +22,23 @@ var intervalEvent = function() {
   output += "食卓に　"+(atDining?'います':'いません')+"<br/>";
                output += "リビングルームに　"+(atLiving?'います':'いません')+"<br/>";
   
-        _e.innerHTML = output;
+  if(atKitchen){
+    cookImage.className = 'animated fadeInLeft';
+  }else{
+    cookImage.className = 'animated fadeOutLeft';
+  }
+  
+  _e.innerHTML = output;
+  
+  if(atKitchen){
+    playAudio("music/kitchen.mp3");
+  }else if(atLiving){
+    playAudio("music/living.mp3");
+  }else if(atBedroom){
+    playAudio("music/bedroom.mp3"); 
+  }else if(atDining){
+    playAudio("music/kakusei.mp3"); 
+  }
 }
 
 var launchEvent = function() {
@@ -34,39 +56,6 @@ var launchEvent = function() {
       atLiving = recv[1][3]=='1';
     }      
 
-//       var _atDining = '';
-//         var _atBedroom = '';
-//         var _atKitchen = '';
-//         var _atLiving = ''; 
-      
-      
-//         if(recv[1].chatAt(0)=='1'){ 
-//           _atDining = 'います';
-//         }else{ 
-//           _atDining = 'いません';
-//         }
-//       console.log(_atDining);
-
-//       if(recv[1].chatAt(1)=='1'){ 
-//         atKitchen = 'います';
-//       }else{  
-//         atKitchen='いません'; 
-//       }
-//       if(recv[1].chatAt(2)=='1'){ atDining = 'います'; }else{ atDining='いません'; }
-//       if(recv[1].chatAt(3)=='1'){ atLiving = 'います'; }else{ atLiving='いません'; }
-      
-//       opt += "<br />";
-//       opt += "ベッドルームに　"+atBedroom+"<br/>";
-//       opt += "キッチンに　"+atKitchen+"<br/>";
-//       opt += "食卓に　"+atDining+"<br/>";
-//       opt += "リビングルームに　"+atLiving+"<br/>";
-//       console.log(output);
-
-//             _e.innerHTML += output;
-//             _e.innerHTML += output;
-//             _e.innerHTML += output;
-//             _e.innerHTML += output;
-//     }
 
   };
   mySerial.connect("127.0.0.1",9943);	// serialdへの接続
@@ -75,11 +64,58 @@ var launchEvent = function() {
   parser_regexp = new RegExp("{n:([0-9]+),t:([\-\+0-9.]+)}");
 
   _e = document.getElementById('test');
+  cookImage = document.getElementById('cook');
+  audio = document.getElementsByTagName("audio")[0];
+  musictitle = document.getElementById('musictitle');
   
-  setInterval(intervalEvent, 1000);
+  
+  setInterval(intervalEvent, 500);
   
 };
 launchEvent();
+
+var playAudio = function(song) {
+  
+  if(!_playFlag || current_song !== song){
+    if(audio){
+        _playFlag = true;
+        current_song = song;
+        audio.src = song;
+       audio.addEventListener("canplay",function(){
+         audio.removeEventListener("canplay",self);
+         audio.currentTime = 0;
+         
+         switch(song){
+           case "music/bedroom.mp3":
+             musictitle.innerHTML = "目覚め用ベッド-仮想都市OZ.mp3";
+             break;
+           case "music/kitchen.mp3":
+             musictitle.innerHTML = "キューピー3分クッキング　テーマ曲　（Full　Version).mp3";
+             break;
+           case "music/living.mp3":
+             musictitle.innerHTML = "ルパン三世のテーマ\(ルパン三世\).mp3";
+             break;
+           case "music/kakusei.mp3":
+             musictitle.innerHTML = "覚醒.mp3";
+             break;
+           default:
+             break;
+         }
+         
+         console.log("canplay");
+       });
+        audio.play(); 
+    }
+  }
+};
+var pauseAudio = function() {
+  if(_playFlag){
+    if(audio){
+        _playFlag = false;
+        audio.pause();
+    }
+  }
+};
 
 // ライフサイクルイベント
 // 機能しません

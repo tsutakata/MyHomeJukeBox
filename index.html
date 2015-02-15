@@ -5,25 +5,44 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
     <title>MyHomeJukeBox</title>
-
+   
+    <link rel="stylesheet" href="css/animate.css">
     <style>
       #cook{
-        right: 0;
-        bottom: 0px;
+        display:block;
+        right: 100px;
+        bottom: 100px;
         position: fixed;
+        background-color: #ccc;
+        padding: 20px;
+        border: 2px solid #ccc;
+
+        -moz-border-radius: 15px 15px 15px 15px;
+            border-radius: 15px 15px 15px 15px;
+      }
+      #cook img {
+        display:block;
+      }
+      .title-wrapper {
+        text-align: center;
+        position: fixed;
+        bottom: 0px;
+        left: calc(50% - 150px);
+        width: 300px;
+        display: block;
       }
       #musictitle{
         font-size: 30px;
-        color:blue;
-        text-align: center;
-        position: fixed;
-        right:50px;
-        bottom: 0px;
-        left: calc(50% - 43.5px);
+        color:white;
       }
       body {
-        border: 1px solid black;
+		  	background:url("base.png") no-repeat center center fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;
       }
+      
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
@@ -35,9 +54,14 @@
     <!-- This code is in the public domain. Enjoy! -->
     <h1 id='test'>Hello World</h1>
     
-    <img id="cook" src="./karaage_2.jpg"  alt="唐揚げ">
-    <p id="musictitle">曲名:n46.mp3</p>
-    <audio src="./n46.mp3" controls></audio>
+    <div id="cook">
+      <img src="./karaage_2.jpg"  alt="唐揚げ">
+    </div>
+    
+    <div class="title-wrapper">
+      <p id="musictitle">n46.mp3</p>
+    </div>
+    <audio></audio>
     
     <script src="TCPSerial.js"></script>
     <script src="app.js"></script>

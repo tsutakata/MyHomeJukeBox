@@ -10,4 +10,11 @@ mySerial.connect("127.0.0.1",9943);	// serialdへの接続
 // mySerial.send("a");
   
 var _e = document.getElementById('test');
-_e.innerHTML = "Recv: <br />Count ";  
+_e.innerHTML = "Recv: <br />Count ";
+
+$.get("https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20121121?format=json&applicationId=1049700679784035775",
+function(data){
+    var img = new Image();
+    img.src=data.result[0].foodImageUrl;
+    document.body.appendChild(img);
+});

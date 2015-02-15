@@ -30,23 +30,25 @@ var intervalEvent = function() {
   
   _e.innerHTML = output;
   
-  _background_style = "no-repeat fixed center center / cover transparent";
+  _background_style = function(url){
+    return "url\("+url+"\) no-repeat fixed center center / cover transparent"
+  };
   
   if(atKitchen){
     playAudio("music/kitchen.mp3");
-    document.body.style.background = "url\(house/house_00010.png\) "+_background_style;
+    document.body.style.background = _background_style("house/house_00010.png");
   }else if(atLiving){
     playAudio("music/living.mp3");
-    document.body.style.background = "url\(house/house_01000.png\) "+_background_style;
+    document.body.style.background = _background_style("house/house_01000.png");
   }else if(atBedroom){
     playAudio("music/bedroom.mp3"); 
-    document.body.style.background = "url\(house/house_10000.png\) "+_background_style;
+    document.body.style.background = _background_style("house/house_10000.png");
   }else if(atDining){
     playAudio("music/kakusei.mp3"); 
-    document.body.style.background = "url\(house/house_00100.png\) "+_background_style;
+    document.body.style.background = _background_style("house/house_00100.png");
   }else{
     pauseAudio();
-    document.body.style.background = "url\(house/house_00000.png\) "+_background_style;
+    document.body.style.background = _background_style("house/house_00000.png");
   }
 }
 

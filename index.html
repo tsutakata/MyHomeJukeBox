@@ -4,9 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>MyHomeJukeBox</title>
 
     <style>
+      #cook{
+        right: 0;
+        bottom: 0px;
+        position: fixed;
+      }
+      #musictitle{
+        font-size: 30px;
+        color:blue;
+        text-align: center;
+        position: fixed;
+        right:50px;
+        bottom: 0px;
+        left: calc(50% - 43.5px);
+      }
       body {
         border: 1px solid black;
       }
@@ -22,6 +36,9 @@
     <h1 id='test'>Hello World</h1>
     <script src="TCPSerial.js"></script>
     <script src="app.js"></script>
+    <img id="cook" src="./karaage_2.jpg" width="50" height="50" alt="唐揚げ">
+    <p id="musictitle">曲名:n46.mp3</p>
+    <audio src="./n46.mp3" controls></audio>
   </body>
 
 </html>

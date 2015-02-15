@@ -17,10 +17,10 @@ var current_song = "";
 var intervalEvent = function() {
     var output = "温度　"+temperature+"度<br/>";    
   
-  output += "ベッドルームに　"+(atBedroom?'います':'いません')+"<br/>";
-  output += "キッチンに　"+(atKitchen?'います':'いません')+"<br/>";
-  output += "食卓に　"+(atDining?'います':'いません')+"<br/>";
-  output += "リビングルームに　"+(atLiving?'います':'いません')+"<br/>";
+//   output += "ベッドルームに　"+(atBedroom?'います':'いません')+"<br/>";
+//   output += "キッチンに　"+(atKitchen?'います':'いません')+"<br/>";
+//   output += "食卓に　"+(atDining?'います':'いません')+"<br/>";
+//   output += "リビングルームに　"+(atLiving?'います':'いません')+"<br/>";
   
   if(atKitchen){
     cookImage.className = 'animated fadeInLeft';
@@ -30,23 +30,23 @@ var intervalEvent = function() {
   
   _e.innerHTML = output;
   
-  
+  _background_style = "no-repeat fixed center center / cover transparent";
   
   if(atKitchen){
     playAudio("music/kitchen.mp3");
-    document.body.style.background = "url\(house/house_00010.png\) no-repeat center center fixed";
+    document.body.style.background = "url\(house/house_00010.png\) "+_background_style;
   }else if(atLiving){
     playAudio("music/living.mp3");
-    document.body.style.background = "url\(house/house_01000.png\) no-repeat center center fixed";
+    document.body.style.background = "url\(house/house_01000.png\) "+_background_style;
   }else if(atBedroom){
     playAudio("music/bedroom.mp3"); 
-    document.body.style.background = "url\(house/house_10000.png\) no-repeat center center fixed";
+    document.body.style.background = "url\(house/house_10000.png\) "+_background_style;
   }else if(atDining){
     playAudio("music/kakusei.mp3"); 
-    document.body.style.background = "url\(house/house_00100.png\) no-repeat center center fixed";
+    document.body.style.background = "url\(house/house_00100.png\) "+_background_style;
   }else{
     pauseAudio();
-    document.body.style.background = "url\(house/house_11111.png\) no-repeat center center fixed";
+    document.body.style.background = "url\(house/house_11111.png\) "+_background_style;
   }
 }
 

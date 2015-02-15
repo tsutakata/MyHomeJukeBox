@@ -84,7 +84,7 @@ launchEvent();
 // ライフサイクルイベント
 // 機能しません
 // var closeEvent = function() {
-  
+
 //     console.log("close");
 //   if(mySerial){
 //     console.log("disconnect");
@@ -95,3 +95,4 @@ launchEvent();
 //     console.log("fsdfs");
 //   window.addEventListener('webapps-launch', launchEvent);
 //   window.addEventListener('webapps-close', closeEvent);
+

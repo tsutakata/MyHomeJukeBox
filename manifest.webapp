@@ -1,6 +1,6 @@
 {
-  "name": "Hello World",
-  "description": "A Hello World app",
+  "name": "My Home Juke Box",
+  "description": "ホームのジュークボックスになります",
   "launch_path": "/index.html",
   "icons": {
     "16": "/icons/icon16x16.png",

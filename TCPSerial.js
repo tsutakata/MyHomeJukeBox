@@ -20,7 +20,7 @@ var TCPSerial = function() {
 };
 
 function seriallog(mes) {
-	console.log(mes)
+// 	console.log(mes)
 };
 
 TCPSerial.prototype = {

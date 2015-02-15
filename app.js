@@ -20,7 +20,7 @@ var intervalEvent = function() {
   output += "ベッドルームに　"+(atBedroom?'います':'いません')+"<br/>";
   output += "キッチンに　"+(atKitchen?'います':'いません')+"<br/>";
   output += "食卓に　"+(atDining?'います':'いません')+"<br/>";
-               output += "リビングルームに　"+(atLiving?'います':'いません')+"<br/>";
+  output += "リビングルームに　"+(atLiving?'います':'いません')+"<br/>";
   
   if(atKitchen){
     cookImage.className = 'animated fadeInLeft';
@@ -34,19 +34,19 @@ var intervalEvent = function() {
   
   if(atKitchen){
     playAudio("music/kitchen.mp3");
-    document.body.style.background = "url\(house/house_00010.png\)";
+    document.body.style.background = "url\(house/house_00010.png\) no-repeat center center fixed";
   }else if(atLiving){
     playAudio("music/living.mp3");
-    document.body.style.background = "url\(house/house_01000.png\)";
+    document.body.style.background = "url\(house/house_01000.png\) no-repeat center center fixed";
   }else if(atBedroom){
     playAudio("music/bedroom.mp3"); 
-    document.body.style.background = "url\(house/house_10000.png\)";
+    document.body.style.background = "url\(house/house_10000.png\) no-repeat center center fixed";
   }else if(atDining){
     playAudio("music/kakusei.mp3"); 
-    document.body.style.background = "url\(house/house_00100.png\)";
+    document.body.style.background = "url\(house/house_00100.png\) no-repeat center center fixed";
   }else{
     pauseAudio();
-    document.body.style.background = "url\(house/house_11111.png\)";
+    document.body.style.background = "url\(house/house_11111.png\) no-repeat center center fixed";
   }
 }
 
